@@ -1,7 +1,12 @@
 import pyautogui as pag, os, configparser, logging, re, sys, shutil, platform
 from pynput import keyboard
 
-program_path = os.path.dirname(os.path.abspath(__file__))
+
+if getattr(sys, 'frozen', False):
+    program_path = os.path.dirname(sys.executable)
+else:
+    program_path = os.path.dirname(os.path.abspath(__file__))
+
 config_path = os.path.join(program_path, "config.ini")
 log_path = os.path.join(program_path, "log.txt")
 config = configparser.ConfigParser()
@@ -25,7 +30,7 @@ def verificar_plataforma():
         logging.info("macOS detectado. Certifique-se de que o programa tem permissão de Acessibilidade nas Configurações.")
     if plataforma == "Windows":
         logging.info("Windows detectado. Nenhuma dependência extra necessária.")
-    logging.info("Ambiente verificado com sucesso!")
+    logging.info("Ambiente verificado...")
 
 def config_padrao():
     logging.info("Criando arquivo config.ini com valores padrão.")
@@ -104,6 +109,7 @@ def on_press(key):
         indice = get_next_index(screenshots_folder)
         screenshot = pag.screenshot()
         screenshot.save(os.path.join(screenshots_folder, f"screenshot_{indice}.png"))
+        logging.info(f"screenshot_{indice}.png salva em: {screenshots_folder}")
 
 if not os.path.exists(config_path):
     config_padrao()
