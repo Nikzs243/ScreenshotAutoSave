@@ -1,4 +1,4 @@
-import pyautogui as pag, os, configparser, logging, re, sys, shutil, platform
+import pyautogui as pag, os, configparser, logging, re, sys, shutil, platform, pymsgbox
 from pynput import keyboard
 
 
@@ -42,13 +42,15 @@ def config_padrao():
         f.write("tecla_sair = ctrl_l\n")
         f.write("\n# Tecla para tirar o screenshot (ex: print_screen, s)\n")
         f.write("tecla_screenshot = print_screen\n")
-
+        f.write("\n# define com True ou False se deve mostrar avisos na tela\n")
+        f.write("avisos = True\n")
 def verificar_config():
     logging.info("Iniciando verificação de integridade do arquivo config.ini...")
     valores_padrao = {
         "pasta": os.path.join(program_path, "screenshots"), 
         "tecla_sair": "ctrl_l", 
-        "tecla_screenshot": "print_screen" 
+        "tecla_screenshot": "print_screen",
+        "avisos": "True" 
     }
     try:
         with open(config_path, encoding="utf-8") as f:
@@ -101,6 +103,8 @@ def on_press(key):
     if key == tecla_sair:
         print("saindo...")
         logging.info("Fechando programa...")
+        if avisos:
+            pymsgbox.alert("Progama fechado!", "Alerta")
         listener.stop()
     if key == tecla_screenshot:
         if not os.path.exists(screenshots_folder):
@@ -118,6 +122,14 @@ else:
     verificar_config()
 verificar_plataforma()
 
+try:
+    avisos = config.getboolean("config", "avisos")
+except ValueError:
+    config["config"]["avisos"] = "true"
+    avisos = config.getboolean("config", "avisos")
+    logging.warning("chave 'avisos' com valor inválido definido, retornando aos valores padrão...")
+    with open(config_path, "w") as f:
+        config.write(f)
 
 screenshots_folder = config["config"].get("pasta")
 if not os.path.exists(screenshots_folder):
@@ -129,6 +141,8 @@ tecla_sair = get_tecla(config["config"].get("tecla_sair"), "ctrl_l", "tecla_sair
 tecla_screenshot = get_tecla(config["config"].get("tecla_screenshot"), "print_screen", "tecla_screenshot")
 
 logging.info("Programa inicializado com sucesso!")
+if avisos:
+    pymsgbox.alert("progama iniciado! ", "Aviso")
 listener = keyboard.Listener(
     on_press=on_press
 )
