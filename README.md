@@ -17,11 +17,20 @@ Personalização:
 Você pode alterar algumas configurações no arquivo "config.ini" para adaptar o comportamento do programa às suas preferências. As opções disponíveis são:
 
 [config]
+
 pasta = caminho onde os screenshots serão salvos
+
 tecla_sair = tecla que encerra o programa (ex: ctrl_l, esc, q)
+
 tecla_screenshot = tecla para tirar screenshot (ex: print_screen, s)
+
 avisos = valor booleano que define se o usuário quer que apareça caixas de aviso ou não
+
+*adicionado key_name_helper.py para te ajudar a descobrir o nome certo da tecla
+
 Observação:
+O arquivo .zip contém todos progamas necessários ja compilados em .exe
+
 Se algum valor estiver incorreto no "config.ini", o programa substitui automaticamente pelo valor padrão e registra a mudança no log.
 
 Autor: Nikzs243
