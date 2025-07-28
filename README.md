@@ -24,5 +24,5 @@ tecla_screenshot = tecla para tirar screenshot (ex: print_screen, s)
 Observação:
 Se algum valor estiver incorreto no "config.ini", o programa substitui automaticamente pelo valor padrão e registra a mudança no log.
 
-Autor: Nikzs
+Autor: Nikzs243
 
