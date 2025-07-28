@@ -20,7 +20,7 @@ Você pode alterar algumas configurações no arquivo "config.ini" para adaptar 
 pasta = caminho onde os screenshots serão salvos
 tecla_sair = tecla que encerra o programa (ex: ctrl_l, esc, q)
 tecla_screenshot = tecla para tirar screenshot (ex: print_screen, s)
-
+avisos = valor booleano que define se o usuário quer que apareça caixas de aviso ou não
 Observação:
 Se algum valor estiver incorreto no "config.ini", o programa substitui automaticamente pelo valor padrão e registra a mudança no log.
 
