@@ -1,37 +1,94 @@
-Este é um programa em Python que permite tirar screenshots de forma automática usando atalhos de teclado. 
-Ele funciona em segundo plano e salva as imagens em uma pasta específica, com nomes organizados de forma sequencial (screenshot_0.png, screenshot_1.png, etc).
 
-Funcionamento:
+📸 ScreenshotAutoSave
 
-Ao iniciar, o programa verifica se o arquivo "config.ini" existe e está correto. Se não estiver, ele cria um novo com valores padrão.
+🇧🇷 This project is also available in [Portuguese](README.pt.md)
 
-O programa então começa a escutar o teclado em segundo plano, aguardando os atalhos definidos.
+A simple and fast Python script that takes a screenshot and saves it automatically with a unique name. No Snipping Tool, no Save As, no typing filenames — just press a key and done.
 
-Quando a tecla de captura (por padrão: print_screen) é pressionada, ele tira um screenshot e salva na pasta definida.
+⚙️ Features
 
-Quando a tecla de saída (por padrão: ctrl_l) é pressionada, o programa é encerrado imediatamente.
+- 📷 Captures the full screen
+- 💾 Saves the image with a unique timestamp-based filename
+- 📁 All images go to the script’s directory (or your custom path)
+- ⚡ Instant, lightweight and easy to run
 
-Todas as ações feitas são registradas no arquivo "log.txt".
 
-Personalização:
-Você pode alterar algumas configurações no arquivo "config.ini" para adaptar o comportamento do programa às suas preferências. As opções disponíveis são:
+🧠 Why use it?
+
+The default screenshot tools on Windows often require:
+- Opening a snipping tool
+- Selecting the region
+- Saving manually
+- Naming the file
+
+This script automates all of that in one shot.
+
+
+🚀 How to Use
+
+1. Clone the repository:
+
+git clone [https://github.com/Nikzs243/ScreenshotAutoSave]
+cd ScreenshotAutoSave
+
+
+2. Install dependencies:
+
+pip install -r requirements.txt
+
+
+3. Run the script:
+
+python main.py
+
+
+The script will take a screenshot and save it in the current directory with a sequencial name e.g: "screenshot_1.png".
+
+
+📦 Dependencies
+
+- `pyautogui`
+- `Pillow`
+
+Already included in `requirements.txt`.
+
+
+⭐ Support
+
+If you like this project, consider giving it a ⭐ — it helps a lot!
+
+Functionality:
+
+When started, the program checks if the file "config.ini" exists and is correct. If not, it creates a new one with default values.
+
+The program then begins listening to the keyboard in the background, waiting for the defined shortcuts.
+
+When the capture key (default: print_screen) is pressed, it takes a screenshot and saves it in the defined folder.
+
+When the exit key (default: ctrl_l) is pressed, the program terminates immediately.
+
+All actions performed are logged in the file "log.txt".
+
+Customization:
+
+You can change some settings in the "config.ini" file to adapt the program's behavior to your preferences. The available options are:
 
 [config]
 
-pasta = caminho onde os screenshots serão salvos
+pasta = path where the screenshots will be saved
 
-tecla_sair = tecla que encerra o programa (ex: ctrl_l, esc, q)
+tecla_sair = key that exits the program (e.g., ctrl_l, esc, q)
 
-tecla_screenshot = tecla para tirar screenshot (ex: print_screen, s)
+tecla_screenshot = key to take a screenshot (e.g., print_screen, s)
 
-avisos = valor booleano que define se o usuário quer que apareça caixas de aviso ou não
+avisos = boolean value that defines whether the user wants warning boxes to appear or not
 
-*adicionado key_name_helper.py para te ajudar a descobrir o nome certo da tecla
+*Added key_name_helper.py to help you find the correct key name.*
 
-Observação:
-O arquivo .zip contém todos progamas necessários ja compilados em .exe
+Note:
 
-Se algum valor estiver incorreto no "config.ini", o programa substitui automaticamente pelo valor padrão e registra a mudança no log.
+The .zip file contains all necessary programs already compiled as .exe.
 
-Autor: Nikzs243
+If any value in "config.ini" is incorrect, the program automatically replaces it with the default value and logs the change.
 
+Author: Nikzs243
